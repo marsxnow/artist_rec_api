@@ -4,7 +4,9 @@ import pandas as pd
 import pickle
 import numpy as np
 import tensorflow as tf
-from train import load_model_and_label_encoder, recommend_artists_nn, ArtistClusterAnalyzer
+from model import ArtistClusterAnalyzer
+from train import load_model_and_label_encoder, recommend_artists_nn
+
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for cross-origin requests
@@ -22,7 +24,7 @@ def load_resources():
         ARTIST_DATA = pd.read_csv('data/data_by_artist.csv')
 
         # Load analyzer
-        with open('analyzer.pkl', 'rb') as f:
+        with open('models/analyzer.pkl', 'rb') as f:
             ANALYZER = pickle.load(f)
 
         # Load model and label encoder
@@ -84,4 +86,4 @@ def recommend():
 load_resources()
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=False)

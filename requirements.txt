@@ -1,0 +1,13 @@
+flask
+flask-cors
+pandas
+numpy
+tensorflow
+scikit-learn
+gunicorn
+spotipy
+plotly
+seaborn
+matplotlib
+kneed
+yellowbrick
